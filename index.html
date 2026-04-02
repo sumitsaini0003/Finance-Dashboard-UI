@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <div>
+          <h1>💰 Finance Dashboard</h1>
+          <p>Track your financial activity with ease</p>
+        </div>
+        <div class="role-selector">
+          <span>Role:</span>
+          <select id="roleSelector">
+            <option value="viewer">👁️ Viewer</option>
+            <option value="admin">⚙️ Admin</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Overview -->
+    <section id="dashboardOverview">
+      <!-- Summary Cards -->
+      <div class="grid-3" id="summaryCards">
+        <!-- Dynamic content -->
+      </div>
+
+      <!-- Visualizations -->
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="section-title">
+            <span class="emoji">📈</span> Balance Trend
+          </h3>
+          <div class="charts-container">
+            <canvas id="balanceChart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <h3 class="section-title">
+            <span class="emoji">🥧</span> Spending Breakdown
+          </h3>
+          <div class="charts-container">
+            <canvas id="spendingChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Transactions -->
+    <section class="card transactions-section">
+      <div class="transactions-header">
+        <h2 class="section-title-large">
+          <span class="emoji">📋</span> Recent Transactions
+        </h2>
+        <div class="search-controls">
+          <div class="search-container">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none">
+              <path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search transactions...">
+          </div>
+          <button class="filters-toggle" id="filtersToggle" title="Toggle filters">
+            <svg class="filter-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 18a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0-7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 9V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4m-10 3v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-5m-10 0h10"/>
+            </svg>
+            Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters Panel -->
+      <div class="filters-panel" id="filtersPanel">
+        <select class="filter-select" id="categoryFilter">
+          <option value="all">All Categories</option>
+          <option value="Salary">💰 Salary</option>
+          <option value="Freelance">💻 Freelance</option>
+          <option value="Groceries">🛒 Groceries</option>
+          <option value="Dining">🍽️ Dining</option>
+          <option value="Transportation">🚗 Transportation</option>
+          <option value="Entertainment">🎬 Entertainment</option>
+          <option value="Utilities">⚡ Utilities</option>
+        </select>
+        <select class="filter-select" id="typeFilter">
+          <option value="all">All Types</option>
+          <option value="income">📈 Income</option>
+          <option value="expense">📉 Expense</option>
+        </select>
+        <button class="btn btn-secondary" id="clearFilters">Clear Filters</button>
+      </div>
+
+      <!-- Transactions List -->
+      <div id="transactionsList" class="transactions-list">
+        <!-- Dynamic content -->
+      </div>
+    </section>
+
+    <!-- Admin Form -->
+    <section id="adminSection" class="admin-section" style="display: none;">
+      <div class="card admin-form">
+        <h3 class="section-title-large">➕ Add New Transaction</h3>
+        <form id="transactionForm" class="form-grid">
+          <input type="text" id="descriptionInput" placeholder="Description *" required>
+          <input type="number" id="amountInput" placeholder="Amount *" step="0.01" min="0" required>
+          <input type="date" id="dateInput" required>
+          <select id="categoryInput" required>
+            <option value="">Select Category</option>
+            <option value="Salary">💰 Salary</option>
+            <option value="Freelance">💻 Freelance</option>
+            <option value="Groceries">🛒 Groceries</option>
+            <option value="Dining">🍽️ Dining</option>
+            <option value="Transportation">🚗 Transportation</option>
+            <option value="Entertainment">🎬 Entertainment</option>
+            <option value="Utilities">⚡ Utilities</option>
+          </select>
+          <select id="typeInput" required>
+            <option value="income">📈 Income</option>
+            <option value="expense">📉 Expense</option>
+          </select>
+          <div></div>
+          <button type="submit" class="btn btn-primary">Add Transaction</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Insights -->
+    <section class="card">
+      <h3 class="section-title-large">💡 Quick Insights</h3>
+      <div class="insights-grid" id="insightsGrid">
+        <!-- Dynamic content -->
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
